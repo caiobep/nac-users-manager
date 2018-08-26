@@ -1,6 +1,7 @@
 
-def criar_departamento(ramal, responsavel, andar):
+def criar_departamento(nome, ramal, responsavel, andar):
     return {
+      "nome": nome,
       "ramal": ramal,
       "responsavel": responsavel,
       "andar": andar
@@ -27,16 +28,15 @@ def criar_usuario(
   historico
   ):
 
-    # TODO: Apagar saporra
-    # niveis_acesso_permitidos = [
-    #     "VISITANTE",
-    #     "USUARIO",
-    #     "ADMINISTRATIVO",
-    #     "TECNICO",
-    #     "SUPER USUARIO"]
+    niveis_acesso_permitidos = [
+        "VISITANTE",
+        "USUARIO",
+        "ADMINISTRATIVO",
+        "TECNICO",
+        "SUPER USUARIO"]
 
-    # if not (nivel_acesso.upper() in niveis_acesso_permitidos):
-    #     raise ValueError('Nivel de acesso desconhecido')
+    if not (nivel_acesso.upper() in niveis_acesso_permitidos):
+        raise ValueError('Nivel de acesso desconhecido')
 
     return {
       "nome_completo": nome_completo,
