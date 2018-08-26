@@ -2,8 +2,12 @@
 
 > Nac para cadastro de usuarios
 
-## Iniciando
+## Rodando o projeto
+
 Simplesmente execute
+
 `python3 ./app.py`
+
 ou
+
 `chmod +x ./app.py && app.py`
