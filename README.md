@@ -2,7 +2,7 @@
 
 > Nac para cadastro de usuarios
 
-## Rodando o projeto
+## Rodando o Projeto
 
 Simplesmente execute
 
@@ -10,4 +10,4 @@ Simplesmente execute
 
 ou
 
-`chmod +x ./app.py && app.py`
+`chmod +x ./app.py && ./app.py`
