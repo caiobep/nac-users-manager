@@ -114,6 +114,8 @@ def mostrar_usuarios_cadastrados():
     usuarios = importar_usuarios_do_arquivo()
 
     for usuario in usuarios:
+        print(bcolors.HEADER + bcolors.BOLD)
+        print("Usuario")
         printar_usuario(usuario)
 
 
