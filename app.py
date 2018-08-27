@@ -19,42 +19,51 @@ def cadastrar_usuario():
 
         print("=====================")
 
-        usuario = criar_usuario(
-            nome_completo=input("Informe o nome Completo: "),
-            nome_reduzido=input("Informe o nome reduzido: ").upper(),
-            cargo=input("Informe o cargo: "),
-            nivel_acesso=input("Informe o nível de acesso: "),
-            hora_ultimo_acesso=input("Informe a Hora do ultimo Acesso: "),
-            data_ultimo_acesso=input("Informe a data do ultimo Acesso: "),
+        try:
+            usuario = criar_usuario(
+                nome_completo=input("Informe o nome Completo: "),
+                nome_reduzido=input("Informe o nome reduzido: ").upper(),
+                cargo=input("Informe o cargo: "),
+                nivel_acesso=input("Informe o nível de acesso: "),
+                hora_ultimo_acesso=input("Informe a Hora do ultimo Acesso: "),
+                data_ultimo_acesso=input("Informe a data do ultimo Acesso: "),
 
-            departamento=criar_departamento(
-                nome=input("Informe o nome do departamento: "),
-                ramal=input("Informe o Ramal: "),
-                responsavel=input("Informe o Responsável: "),
-                andar=input("Informe o Andar: ")
-            ),
+                departamento=criar_departamento(
+                    nome=input("Informe o nome do departamento: "),
+                    ramal=input("Informe o Ramal: "),
+                    responsavel=input("Informe o Responsável: "),
+                    andar=input("Informe o Andar: ")
+                ),
 
-            historico=criar_historico(
-                url=input("Informe a URL: "),
-                ip_origem=input("Informe o ip de origem: "),
-                data=input("Informe a data: "),
-                hora=input("Informe a hora:")
+                historico=criar_historico(
+                    url=input("Informe a URL: "),
+                    ip_origem=input("Informe o ip de origem: "),
+                    data=input("Informe a data: "),
+                    hora=input("Informe a hora:")
+                )
             )
-        )
 
-        # Verifique se exite algum usuario com o mesmo nome reduzido
-        existe_usuario_com_mesmo_nome_reduzido = any(
-            u['nome_reduzido'] == usuario['nome_reduzido'] for u in usuarios
-        )
+            # Verifique se exite algum usuario com o mesmo nome reduzido
+            existe_usuario_com_mesmo_nome_reduzido = any(
+                u['nome_reduzido'] == usuario['nome_reduzido'] for u in usuarios
+            )
 
-        if not existe_usuario_com_mesmo_nome_reduzido:
+            if existe_usuario_com_mesmo_nome_reduzido:
+                raise Exception("Já existe um usuario com este nome reduzido.")
+
             usuarios.append(usuario)
-        else:
+
+        except ValueError as e:
             print(bcolors.FAIL)
-            print("Já existe um usuario com este nome reduzido.")
+            print(e)
             print("\r\nUsuário não cadastrado!")
             print(bcolors.ENDC)
-
+        except Exception as ex:
+            print(bcolors.FAIL)
+            print(ex)
+            print("\r\nUsuário não cadastrado!")
+            print(bcolors.ENDC)
+       
         continuar_cadastrando = True if input(
             "Digite <S> para continar cadastrando?: "
         ).upper() == "S" else False
