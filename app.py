@@ -101,6 +101,13 @@ def consultar_usuarios_departamento():
         printar_usuario(usuario)
 
 
+def mostrar_usuarios_cadastrados():
+    usuarios = importar_usuarios_do_arquivo()
+
+    for usuario in usuarios:
+        printar_usuario(usuario)
+
+
 def menu():
     clear_screen()
     print(bcolors.BOLD)
@@ -110,6 +117,7 @@ def menu():
     print("Digite <1> para cadastrar usuarios")
     print("Digite <2> para consultar usuario por nivel de acesso")
     print("Digite <3> para consultar usuarios por departamento")
+    print("Digite <4> para mostrar os usuarios no `users.json`")
     print(bcolors.ENDC)
     item_desejado = input("Informe sua resposta: ")
 
@@ -117,9 +125,10 @@ def menu():
         1: cadastrar_usuario,
         2: consultar_nivel_acesso,
         3: consultar_usuarios_departamento,
+        4: mostrar_usuarios_cadastrados
     }
 
-    if int(item_desejado) in [1, 2, 3]:
+    if int(item_desejado) in [1, 2, 3, 4]:
         clear_screen()
         print(bcolors.ENDC)
         modulos[int(item_desejado)]()
